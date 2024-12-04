@@ -132,7 +132,7 @@ __raw Wiktextract data (JSONL, one object per line)__ option there.
 Get the source code:
 
 ```console
-git@github.com:QubitPi/wiktionary-data.git
+git clone git@github.com:QubitPi/wiktionary-data.git
 cd wiktionary-data
 ```
 
