@@ -85,6 +85,9 @@ def extract_data(wiktextract_data_path: str):
                     sanskrit.write("\n")
 
 
+LANGUAGES = ["German", "Latin", "Ancient Greek", "Korean", "Old Persian", "Akkadian", "Elamite", "Sanskrit"]
+
+
 def extract_graph(wiktextract_data_path: str):
     import json
     from wiktionary.wiktextract.parse import get_definitions
@@ -92,7 +95,7 @@ def extract_graph(wiktextract_data_path: str):
     with (open(wiktextract_data_path) as data, open("word-definition-graph-data.jsonl", "w") as graph):
         for line in data:
             vocabulary = json.loads(line)
-            if "lang" in vocabulary:
+            if "lang" in vocabulary and vocabulary["lang"] in LANGUAGES:
                 term = vocabulary["word"]
                 if vocabulary["lang"] == "German":
                     term = get_gender_modifier(vocabulary) + term
