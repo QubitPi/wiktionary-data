@@ -26,9 +26,11 @@ def extract_data(wiktextract_data_path: str):
     - pos: the Part of Speech of this word
     - definitions: an array of definitions, each element of the array is a string
 
-    :param wiktextract_data_path: the path of the wiktextract jsonl file. Can be downloaded from https://kaikki.org/dictionary/rawdata.html
+    :param wiktextract_data_path: the path of the wiktextract jsonl file. Can be downloaded from
+    https://kaikki.org/dictionary/rawdata.html
     """
     import json
+
     from wiktionary.wiktextract.parse import get_audios
     from wiktionary.wiktextract.parse import get_definitions
 
@@ -40,8 +42,7 @@ def extract_data(wiktextract_data_path: str):
           open("old-persian-wiktextract-data.jsonl", "w") as old_persian,
           open("akkadian-wiktextract-data.jsonl", "w") as akkadian,
           open("elamite-wiktextract-data.jsonl", "w") as elamite,
-          open("sanskrit-wiktextract-data.jsonl", "w") as sanskrit
-    ):
+          open("sanskrit-wiktextract-data.jsonl", "w") as sanskrit):
         for line in data:
             vocabulary = json.loads(line)
             if "lang" in vocabulary:
@@ -63,25 +64,39 @@ def extract_data(wiktextract_data_path: str):
                     )
                     german.write("\n")
                 if vocabulary["lang"] == "Latin":
-                    latin.write(json.dumps({"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}))
+                    latin.write(json.dumps(
+                        {"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}
+                    ))
                     latin.write("\n")
                 if vocabulary["lang"] == "Ancient Greek":
-                    ancient_greek.write(json.dumps({"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}))
+                    ancient_greek.write(json.dumps(
+                        {"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}
+                    ))
                     ancient_greek.write("\n")
                 if vocabulary["lang"] == "Korean":
-                    korean.write(json.dumps({"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}))
+                    korean.write(json.dumps(
+                        {"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}
+                    ))
                     korean.write("\n")
                 if vocabulary["lang"] == "Old Persian":
-                    old_persian.write(json.dumps({"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}))
+                    old_persian.write(json.dumps(
+                        {"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}
+                    ))
                     old_persian.write("\n")
                 if vocabulary["lang"] == "Akkadian":
-                    akkadian.write(json.dumps({"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}))
+                    akkadian.write(json.dumps(
+                        {"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}
+                    ))
                     akkadian.write("\n")
                 if vocabulary["lang"] == "Elamite":
-                    elamite.write(json.dumps({"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}))
+                    elamite.write(json.dumps(
+                        {"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}
+                    ))
                     elamite.write("\n")
                 if vocabulary["lang"] == "Sanskrit":
-                    sanskrit.write(json.dumps({"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}))
+                    sanskrit.write(json.dumps(
+                        {"term": term, "part of speech": pos, "definitions": definitions, "audios": audios}
+                    ))
                     sanskrit.write("\n")
 
 
@@ -90,6 +105,7 @@ LANGUAGES = ["German", "Latin", "Ancient Greek", "Korean", "Old Persian", "Akkad
 
 def extract_graph(wiktextract_data_path: str):
     import json
+
     from wiktionary.wiktextract.parse import get_definitions
 
     with (open(wiktextract_data_path) as data, open("word-definition-graph-data.jsonl", "w") as graph):

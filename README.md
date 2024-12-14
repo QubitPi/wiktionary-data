@@ -83,12 +83,18 @@ The Wiktionary language data is available on 🤗 [Hugging Face Datasets][Huggin
 
 ```python
 from datasets import load_dataset
-dataset = load_dataset("QubitPi/wiktionary-data", split="German")
+dataset = load_dataset("QubitPi/wiktionary-data")
 ```
 
 There are __two__ data subsets:
 
-1. __Languages__ subset that contains the sub-data extraction of the following splits:
+1. __Languages__ subset that contains extraction of a subset of supported languages:
+
+   ```console
+   dataset = load_dataset("QubitPi/wiktionary-data", "Wiktionary")
+   ```
+   
+   The subset contains the following splits
 
    - `German`
    - `Latin`
@@ -101,7 +107,13 @@ There are __two__ data subsets:
 
 2. __Graph__ subset that is useful for constructing knowledge graphs:
 
-   - `AllLanguage`: all the languages in a giant graph
+   ```console
+   dataset = load_dataset("QubitPi/wiktionary-data", "Knowledge Graph")
+   ```
+   
+   The subset contains the following splits
+
+   - `AllLanguage`: all the languages listed above in a giant graph
 
    The _Graph_ data ontology is the following:
 

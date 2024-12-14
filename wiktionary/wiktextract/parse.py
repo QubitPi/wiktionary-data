@@ -15,8 +15,10 @@
 def get_part_of_speech(vocabulary) -> str:
     return vocabulary["pos"] if "pos" in vocabulary else "Unknown"
 
+
 def get_definitions(vocabulary) -> list:
-    return [sense["glosses"][0] if "glosses" in sense else sense["raw_glosses"][0] for sense in vocabulary["senses"] if "glosses" in sense or "raw_glosses" in sense]
+    return [sense["glosses"][0] if "glosses" in sense else sense["raw_glosses"][0] for sense in vocabulary["senses"] if
+            "glosses" in sense or "raw_glosses" in sense]
 
 
 def get_audios(vocabulary) -> list:

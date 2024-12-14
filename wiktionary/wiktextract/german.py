@@ -16,6 +16,7 @@ from wiktionary.wiktextract.parse import get_part_of_speech
 
 GERMAN_CASES = ["nominative", "genitive", "dative", "accusative"]
 
+
 def get_gender_modifier(vocabulary) -> str:
     if get_part_of_speech(vocabulary) == "noun" and "categories" in vocabulary:
         if "German masculine nouns" in vocabulary["categories"]:
@@ -101,7 +102,6 @@ def get_german_adj_declensions(vocabulary) -> dict:
                     conjugations[degree][declension_type].append(dec_by_case)
 
     return conjugations
-
 
 
 def get_german_noun_declensions(vocabulary):

@@ -53,12 +53,12 @@ class TestParse(unittest.TestCase):
             }),
         )
 
-
     def test_get_audios(self):
         self.assertEqual(
             [{
                 "ogg_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/De-Volap%C3%BCk.ogg",
-                "mp3_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a8/De-Volap%C3%BCk.ogg/De-Volap%C3%BCk.ogg.mp3"
+                "mp3_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a8/De-Volap%C3%BCk.ogg/" +
+                           "De-Volap%C3%BCk.ogg.mp3"
             }],
             get_audios({
                 "sounds": [
@@ -71,7 +71,8 @@ class TestParse(unittest.TestCase):
                     {
                         "audio": "De-Volapük.ogg",
                         "ogg_url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/De-Volap%C3%BCk.ogg",
-                        "mp3_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a8/De-Volap%C3%BCk.ogg/De-Volap%C3%BCk.ogg.mp3"
+                        "mp3_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/a/a8/" +
+                                   "De-Volap%C3%BCk.ogg/De-Volap%C3%BCk.ogg.mp3"
                     }
                 ]
             })

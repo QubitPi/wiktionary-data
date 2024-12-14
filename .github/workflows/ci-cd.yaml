@@ -51,8 +51,24 @@ jobs:
         with:
           fail: true
 
+  code-style:
+    name: Python Code Style Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install dependencies
+        run: pip3 install -r requirements.txt
+      - name: Check import orders
+        run: isort --check .
+      - name: pep8
+        run: pycodestyle .
+
   sync-to-huggingface-space:
-    needs: [yaml-lint, linkChecker]
+    needs: [yaml-lint, linkChecker, code-style]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

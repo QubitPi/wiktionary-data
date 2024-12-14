@@ -14,12 +14,16 @@
 from wiktionary.wiktextract.extract import extract_data
 from wiktionary.wiktextract.extract import extract_graph
 
-
 if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description='Post-process Wiktextract data')
-    parser.add_argument('-i', '--input', help='Raw data file, i.e. the path to raw-wiktextract-data.jsonl', required=True)
+    parser.add_argument(
+        '-i',
+        '--input',
+        help='Raw data file, i.e. the path to raw-wiktextract-data.jsonl',
+        required=True
+    )
     args = vars(parser.parse_args())
 
     extract_data(args["input"])
