@@ -56,10 +56,9 @@ Wiktionary Data on Hugging Face Datasets
 ========================================
 
 [![Hugging Face dataset badge]][Hugging Face dataset URL]
-
-![Python Version Badge]
 [![GitHub workflow status badge][GitHub workflow status badge]][GitHub workflow status URL]
 [![Hugging Face sync status badge]][Hugging Face sync status URL]
+[![Python Version][Python Version Badge]][Python URL]
 [![Apache License Badge]][Apache License, Version 2.0]
 
 [wiktionary-data]() is a sub-data extraction of the [English Wiktionary](https://en.wiktionary.org) that currently
@@ -74,43 +73,39 @@ supports the following languages:
 - [Elamite](https://en.wikipedia.org/wiki/Elamite_language)
 - __संस्कृतम्__ - Sanskrit, or Classical Sanskrit
 
-[wiktionary-data]() was originally a sub-module of [wilhelm-graphdb](https://github.com/QubitPi/wilhelm-graphdb). While
-the dataset it's getting bigger, I noticed a wave of more exciting potentials this dataset can bring about that
-stretches beyond the scope of the containing project. Therefore I decided to promote it to a dedicated module; and here
-comes this repo.
-
-The Wiktionary language data is available on 🤗 [Hugging Face Datasets][Hugging Face dataset URL].
+The Wiktionary language data is available on 🤗 [Hugging Face Datasets][Hugging Face dataset URL]. To access the data
+load API library first:
 
 ```python
 from datasets import load_dataset
-dataset = load_dataset("QubitPi/wiktionary-data")
 ```
 
-There are __two__ data subsets:
+There are __2__ data subsets:
 
 1. __Languages__ subset that contains extraction of a subset of supported languages:
 
    ```console
    dataset = load_dataset("QubitPi/wiktionary-data", "Wiktionary")
    ```
-   
-   The subset contains the following splits
 
-   - `German`
-   - `Latin`
-   - `AncientGreek`
-   - `Korean`
-   - `OldPersian`
-   - `Akkadian`
-   - `Elamite`
-   - `Sanskrit`
+   The subset contains the splits of the following languages (followed by the invocation of fetching their respective
+   splits)
+
+   - __German__: `split = dataset["German"]`
+   - __Latin__: `split = dataset["Latin"]`
+   - __Ancient Greek__: `split = dataset["AncientGreek"]`
+   - __Korean__: `split = dataset["Korean"]`
+   - __Old Persian__: `split = dataset["OldPersian"]`
+   - __Akkadian__: `split = dataset["Akkadian"]`
+   - __Elamite__: `split = dataset["Elamite"]`
+   - __Sanskrit__: `split = dataset["Sanskrit"]`
 
 2. __Graph__ subset that is useful for constructing knowledge graphs:
 
    ```console
    dataset = load_dataset("QubitPi/wiktionary-data", "Knowledge Graph")
    ```
-   
+
    The subset contains the following splits
 
    - `AllLanguage`: all the languages listed above in a giant graph
@@ -169,9 +164,9 @@ or, on Windows
 ```
 
 > [!TIP]
-> 
+>
 > To deactivate this environment, use
-> 
+>
 > ```console
 > deactivate
 > ```
@@ -187,16 +182,17 @@ License
 
 The use and distribution terms for [wiktionary-data]() are covered by the [Apache License, Version 2.0].
 
-[Apache License Badge]: https://img.shields.io/badge/Apache%202.0-F25910.svg?style=for-the-badge&logo=Apache&logoColor=white
+[Apache License Badge]: https://img.shields.io/github/license/QubitPi/Antiqua?style=for-the-badge&logo=Apache&logoColor=white&labelColor=FF7777&color=00B8A9
 [Apache License, Version 2.0]: https://www.apache.org/licenses/LICENSE-2.0
 
-[GitHub workflow status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/wiktionary-data/ci-cd.yaml?branch=master&style=for-the-badge&logo=github&logoColor=white&label=CI/CD
+[GitHub workflow status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/wiktionary-data/ci-cd.yaml?branch=master&style=for-the-badge&logo=github&logoColor=white&label=CI/CD&labelColor=2088FF&color=00BD56
 [GitHub workflow status URL]: https://github.com/QubitPi/wiktionary-data/actions/workflows/ci-cd.yaml
 
-[Hugging Face dataset badge]: https://img.shields.io/badge/Hugging%20Face%20Dataset-wiktionary--data-FF9D00?style=for-the-badge&logo=huggingface&logoColor=white&labelColor=6B7280
+[Hugging Face dataset badge]: https://img.shields.io/badge/HF%20Datasets-wiktionary--data-54C392?style=for-the-badge&logo=huggingface&logoColor=white&labelColor=15B392
 [Hugging Face dataset URL]: https://huggingface.co/datasets/QubitPi/wiktionary-data
 
-[Hugging Face sync status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/wiktionary-data/ci-cd.yaml?branch=master&style=for-the-badge&logo=github&logoColor=white&label=Hugging%20Face%20Sync%20Up
+[Hugging Face sync status badge]: https://img.shields.io/github/actions/workflow/status/QubitPi/wiktionary-data/ci-cd.yaml?branch=master&style=for-the-badge&logo=github&logoColor=white&label=HF%20Sync%20Up&labelColor=2088FF&color=00BD56
 [Hugging Face sync status URL]: https://github.com/QubitPi/wiktionary-data/actions/workflows/ci-cd.yaml
 
-[Python Version Badge]: https://img.shields.io/badge/Python-3.10-FFD845?labelColor=498ABC&style=for-the-badge&logo=python&logoColor=white
+[Python Version Badge]: https://img.shields.io/badge/Python-3.10-957FEF?style=for-the-badge&logo=python&logoColor=white&labelColor=7161ef
+[Python URL]: https://python.qubitpi.org/
