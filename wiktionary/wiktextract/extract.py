@@ -18,7 +18,7 @@ from wiktionary.wiktextract.german import get_german_inflection
 
 def extract_data(wiktextract_data_path: str):
     """
-    Extract data from raw-wiktextract-data.jsonl useful for wilhelmlang.com.
+    Extract data from raw-wiktextract-data.jsonl.
 
     Data of each language is written in a dedicated .jsonl file. Each line of the JSONL file has the following fields:
 
