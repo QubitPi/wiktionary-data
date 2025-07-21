@@ -1,4 +1,4 @@
-wilhelm_python_sdk
-
 pycodestyle
 isort
+
+python-arango

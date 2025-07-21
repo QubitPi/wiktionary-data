@@ -1,7 +1,7 @@
 .idea/
 .DS_Store
 .venv
-raw-wiktextract-data.jsonl
+*.jsonl
 load.log
 data/
 __pycache__
