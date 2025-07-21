@@ -57,7 +57,7 @@ Wiktionary Data on Hugging Face Datasets
 
 [wiktionary-data]() is a sub-data extraction of the [English Wiktionary](https://en.wiktionary.org), the undoubtedly world's largest freely
 available dictionary, and converts it into a machine-readable, structured JSON format what is easy to use for both
-linguists and artificial intelligence practitioners. The following languages are currently supported:
+linguists and machine learning practitioners. The following languages are currently supported:
 
 > [!TIP]
 >
