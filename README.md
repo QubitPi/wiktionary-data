@@ -10,8 +10,7 @@ Wiktionary Data
 
 [wiktionary-data]() is a _sub-data_ extraction of the [English Wiktionary](https://en.wiktionary.org), the undoubtedly
 world's largest freely available dictionary, and converts it into a machine-readable, structured JSON format that is
-easy to use for both linguists and artificial intelligence practitioners. The following languages are currently
-supported:
+easy to use for both linguists and machine learning practitioners. The following languages are currently supported:
 
 > [!TIP]
 >
