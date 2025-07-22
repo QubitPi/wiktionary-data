@@ -35,14 +35,41 @@ The Wiktionary language data can be accessed via:
   docker run -d -p 8529:8529 -e ARANGO_NO_AUTH=1 jack20191124/wiktionary-data
   ```
 
+  To interact with the container with [Arango Python API](https://arango-python.qubitpi.org/), import and load client
+  first:
+
   ```python
   from arango import ArangoClient
-
   client = ArangoClient(hosts='http://localhost:8529')
+  ```
+
+  to iterate through the German vocabularies, for example:
+
+  ```python
   db = client.db("wiktionary", username='root', password='no-password')
   cursor = db.aql.execute('FOR doc IN German RETURN doc')
   print([document['term'] for document in cursor])
   ```
+
+  to search for the definition of a German word "reden":
+
+  ```python
+  collection = db.collection('German')
+  result = collection.find({"term": "reden"})
+      for doc in result:
+          print(doc["definitions"])
+  ```
+
+  The available [collections](https://arango.qubitpi.org/stable/concepts/data-structure/collections/) are:
+
+  - `German`
+  - `Latin`
+  - `AncientGreek`
+  - `Korean`
+  - `OldPersian`
+  - `Akkadian`
+  - `Elamite`
+  - `Sanskrit`
 
   The Arango web console is accessible at http://localhost:8529 and should be navigated in the following two steps:
 
