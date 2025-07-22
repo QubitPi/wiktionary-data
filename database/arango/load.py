@@ -35,4 +35,14 @@ if __name__ == '__main__':
         sys_db.create_database(wiktionary_database)
     db = client.db(wiktionary_database, username='root', password='no-password')
 
-    load_by_language("German", "../../german-wiktextract-data.jsonl")
+    for language, jsonl_path in [
+        ("German", "../../german-wiktextract-data.jsonl"),
+        ("Latin", "../../latin-wiktextract-data.jsonl"),
+        ("AncientGreek", "../../ancient-greek-wiktextract-data.jsonl"),
+        ("Korean", "../../korean-wiktextract-data.jsonl"),
+        ("OldPersian", "../../old-persian-wiktextract-data.jsonl"),
+        ("Akkadian", "../../akkadian-wiktextract-data.jsonl"),
+        ("Elamite", "../../elamite-wiktextract-data.jsonl"),
+        ("Sanskrit", "../../sanskrit-wiktextract-data.jsonl"),
+    ]:
+        load_by_language(language, jsonl_path)
