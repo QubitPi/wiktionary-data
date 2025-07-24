@@ -1,10 +1,10 @@
-# Copyright Jiaqi Liu
+# Copyright 2025 Jiaqi Liu. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     http://www.apache.org/licenses/LICENSE-2.0
+#     https://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -159,6 +159,12 @@ jobs:
         run: |
           python3 ./extract.py -i raw-wiktextract-data.jsonl
           rm raw-wiktextract-data.jsonl
+      - name: Make sure ArangoDB is up
+        run: |
+          # shellcheck disable=SC2034,SC2015
+          for i in {1..60}; do
+            curl -vL http://localhost:8529 && break || sleep 1
+          done
       - name: Load all languages into the intermediate container
         run: |
           cd database/arango
@@ -170,6 +176,7 @@ jobs:
         with:
           context: .
           push: false
+          no-cache: true
       - name: Login to DockerHub
         if: github.ref == 'refs/heads/master'
         uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
@@ -182,6 +189,7 @@ jobs:
         with:
           context: .
           push: true
+          no-cache: true
           tags: jack20191124/wiktionary-data:latest
       - name: Push image Description
         if: github.ref == 'refs/heads/master'
