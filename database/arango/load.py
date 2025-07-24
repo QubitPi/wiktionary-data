@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import json
-from multiprocessing import Process
 
 from arango import ArangoClient
 
@@ -49,8 +48,6 @@ if __name__ == '__main__':
         sys_db.create_database(wiktionary_database)
     db = client.db(wiktionary_database, username='root', password='no-password')
 
-    processes = []
-
     for language, jsonl_path in [
         ("German", "../../german-wiktextract-data.jsonl"),
         ("Latin", "../../latin-wiktextract-data.jsonl"),
@@ -61,9 +58,4 @@ if __name__ == '__main__':
         ("Elamite", "../../elamite-wiktextract-data.jsonl"),
         ("Sanskrit", "../../sanskrit-wiktextract-data.jsonl"),
     ]:
-        process = Process(target=load_by_language, args=(language, jsonl_path))
-        process.start()
-        processes.append(process)
-
-    for process in processes:
-        process.join()
+        load_by_language(language, jsonl_path)
