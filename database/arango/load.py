@@ -1,3 +1,17 @@
+# Copyright 2025 Jiaqi Liu. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import json
 from multiprocessing import Process
 
@@ -5,11 +19,10 @@ from arango import ArangoClient
 
 
 def load_by_language(language: str, jsonl_path: str):
-    german_collection = language
-    if db.has_collection(german_collection):
-        collection = db.collection(german_collection)
+    if db.has_collection(language):
+        collection = db.collection(language)
     else:
-        collection = db.create_collection(german_collection)
+        collection = db.create_collection(language)
 
     collection.add_index({'type': 'persistent', 'fields': ['term'], 'unique': False})
     collection.truncate()
